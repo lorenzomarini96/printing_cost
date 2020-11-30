@@ -2,14 +2,9 @@
 convenience between the cost of a standard copy shop and a home-made
  print with a laser printer."""
 
-
 import numpy as np
 import matplotlib.pyplot as plt
-
-import cv2 
-
 from skimage.util import img_as_ubyte
-
 
 
 def image_analysis(file_path, toner_cost=0., toner_npage=0,
