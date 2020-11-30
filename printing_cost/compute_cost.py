@@ -23,14 +23,17 @@ def image_analysis(file_path, toner_cost=0., toner_npage=0,
     
     Parameters
     ----------
-    file_path:     path to the file containing the image to be analyzed.
-    toner_cost:    int or float. Cost of toner
-    npage:         int. Number of printable pages declared with 5% coverage
-    copyshop_cost: int or float. cost of a single print at a copy shop
+    file_path :       path to the file containing the image to be analyzed.
+    toner_cost :      int or float. Cost of toner
+    npage :         int. Number of printable pages declared with 5% coverage
+    stack_paper_cost : 0., 
+    stack_npage : 0
+    copyshop_cost : int or float. cost of a single print at a copy shop
+    verbose :   
 
     Returns:
     --------
-    print_cost     float. Total cost to print the image.
+    None
 
     Notes
     -----
@@ -39,30 +42,34 @@ def image_analysis(file_path, toner_cost=0., toner_npage=0,
     Esamples
     --------
 
-    >>> image_analysis(images_folder/Lena.jpg)
+    >>> image_analysis(file_path="images_folder/Lena.jpg",
+                    toner_cost=15.0,toner_npage=1000,stack_paper_cost=5.0,
+                    stack_npage=500, copyshop_cost=0.035, verbose=True) 
+    -------------------------------------------
     # Image Information:
-    -----------------------------
-    Size            = (567, 567)
-    Mode            = L
-    Format          = JPEG
-    Image Shape     = (567, 567)
-    Number of pixel = 321489
-    -----------------------------
-    # Histogram Information:
-    -----------------------------
-    Counts              321489
-    Mean                114.758
-    Standard Deviation  55.670
-    Mean Error          0.098
-    Min                 0.000
-    Max                 255.000
-    -----------------------------
-    # Print Information:
-    Page Coverage       54.997%
-    Cost of printing    0.175 €
-
+    Image shape        (567, 567)
+    Number of pixel    321489
+    -------------------------------------------
+    # Histogram Information
+    Counts                   321489
+    Mean                    114.758
+    Standard Deviation       55.670
+    Min                       0.000
+    Max                     255.000
+    -------------------------------------
+    # Print Information
+    Gray cover of the image 54.997 %
+    -------------------------------------------
+    # Cost Information
+    Cost of a single page (paper)      0.010 €
+    Ink cost for one print             0.165 €
+    Total cost for one print           0.175 €
+    -------------------------------------------
+    Cheaper to print at the shop!
+    Saving money: 0.175 € - 0.035 €: 0.140 €
     It's cheaper to go to the copy shop!
     You would save (0.17 - 0.035)€ = 0.14€
+
     See also
     --------    
 
@@ -145,9 +152,8 @@ def image_analysis(file_path, toner_cost=0., toner_npage=0,
     fig.tight_layout()
     plt.show()
 
-    #return total_cost
 
 if __name__ == "__main__":
     image_analysis(file_path="images_folder/Lena.jpg",
                     toner_cost=15.0,toner_npage=1000,stack_paper_cost=5.0,
-                    stack_npage=500, copyshop_cost=0.035, verbose=True)
+                    stack_npage=500, copyshop_cost=0.035, verbose=True) 
